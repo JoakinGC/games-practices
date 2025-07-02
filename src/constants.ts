@@ -5,46 +5,64 @@ export const ramdomWords:Array<PropsCard> = [
     {
         id:0,
         state:false,
-        word:"Amanecer"
+        word:"Amanecer",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:1,
         state:false,
-        word:"Brócoli"
+        word:"Brócoli",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:2,
         state:false,
-        word:"Cangrejo"
+        word:"Cangrejo",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:3,
         state:false,
-        word:"Dócil"
+        word:"Dócil",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:4,
         state:false,
-        word:"Esfera"
+        word:"Esfera",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:5,
         state:false,
-        word:"Fósil"
+        word:"Fósil",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:6,
         state:false,
-        word:"Gárgola"
+        word:"Gárgola",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:7,
         state:false,
-        word:"Hedor"
+        word:"Hedor",
+        score:1,
+        wasSuccessful:false
     },
     {
         id:8,
         state:false,
-        word:"Ígneo"
+        word:"Ígneo",
+        score:1,
+        wasSuccessful:false
     },
 ]

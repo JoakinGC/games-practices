@@ -13,6 +13,9 @@ function App() {
   const [wordSelected, setWordSelected] = useState<Array<PropsCard>|null>(null)
   const refWatch = useRef<any>(null);
   const {name,score,updateName,updateScore} = use(UserContext);
+  const [resultScore, setResultScore] = useState(0)
+  const [targetWord, setTargetWord] = useState<null|PropsCard>(null)
+  
 
 
   const setStateWord = useCallback(({state,word}:{state:boolean,word:PropsCard}) =>{
@@ -33,26 +36,50 @@ function App() {
     //console.log(words)
   },[])
 
+  const resetGame = useCallback(() =>{
+    setResultScore(0)
+    setWordSelected(null)
+    setTargetWord(null)
+    setStateAllWords({state:false})
+    setWatch({minutes:0,seconds:0})
+    setTogleButton(prev => ({...prev, stateMessage: false}))
+  },[togleButton])
 
-  const checkWordSelected = useCallback(async ({word} :{word:PropsCard}) =>{
-    
-    console.log(wordSelected===null);
-    console.log(wordSelected);
-    
-    setWordSelected((prev) =>{
-      if(prev===null)return  [word];
-      else {
-        const wordExist = prev.filter(e => word.id === e.id)
 
-        if(wordExist.length>0) return [...prev]
-        
-        return [...prev,word]
+  const checkWordSelected = useCallback(({ word }: { word: PropsCard }) => {
+  if (!targetWord) return;
+
+  if (word.id === targetWord.id) {
+    setStateWord({ state: true, word });
+    setResultScore(prev => prev + 1);
+
+    setWordSelected(prev => {
+      const updated = prev ? [...prev, word] : [word];
+
+      const selectedIds = updated.map(w => w.id);
+      const remainingWords = words.filter(w => !selectedIds.includes(w.id));
+
+      if (remainingWords.length === 0) {
+        alert("¡Completaste todas las palabras!");
+        updateScore({score:resultScore})
+        resetGame();
+        return updated;
       }
-      //[...prev,word]
-      
-    })
-    setStateWord({state:true,word});
-  },[])
+
+      const next = remainingWords[Math.floor(Math.random() * remainingWords.length)];
+      setTargetWord(next);
+
+      return updated;
+    });
+  } else {
+  
+    setStateWord({ state: true, word });
+    alert("¡Palabra incorrecta!");
+    resetGame();
+  }
+}, [targetWord, words, resetGame, setStateWord]);
+
+
 
   const setStateAllWords = useCallback(({state}:{state:boolean}) =>{
     setWords(ramdomWords.map((e) =>{
@@ -64,64 +91,66 @@ function App() {
   },[])
 
   const startGame = useCallback(() =>{
+    setTargetWord((prev) =>{return words[Math.floor(Math.random() * words.length)]})
+
+
     setWatch({minutes:0,seconds:3})
     setTogleButton({stateDisabled:!togleButton.stateDisabled,stateMessage:!togleButton.stateMessage})
   },[])
 
+
   useEffect(() =>{
-
-      if(watch.seconds === 3){
-        setStateAllWords({state:true});
-        setTogleButton({...togleButton,stateDisabled:true})
-      }
-
-      if(watch.seconds===0&&refWatch.current) {
-        clearInterval(refWatch.current)
-        setStateAllWords({state:false})
-        setTogleButton({stateDisabled:false,stateMessage:true})
-      }
-      
-
-      //se mantiene nullo la referencia hasta que se alla iniciado
-      if(togleButton.stateMessage){
-        refWatch.current = setInterval(()=>{
-        if(watch.seconds>0) {
-          setWatch({...watch,seconds:--watch.seconds})
-          setTogleButton({stateDisabled:true,stateMessage:true})
-        }
-
-          
-      },1000)
-      }
-    //console.log(refWatch);
-
-
+    if(watch.seconds>1)setStateAllWords({state:true})
+    
   },[watch])
 
   useEffect(() =>{
-      console.log(wordSelected)
+      //console.log(wordSelected)
       //console.log(togleButton);
       console.log("words: ",words);
       
       
-  },[wordSelected])
+  },[words])
+
+  useEffect(() => {
+  if (!togleButton.stateMessage) return;
+
+  refWatch.current = setInterval(() => {
+    setWatch(prev => {
+      if (prev.seconds === 1) {
+        clearInterval(refWatch.current);
+        setStateAllWords({ state: false });
+        setTogleButton({ stateDisabled: false, stateMessage: true });
+        return { minutes: 0, seconds: 0 };
+      }
+
+      return { ...prev, seconds: prev.seconds - 1 };
+    });
+  }, 1000);
+
+  return () => clearInterval(refWatch.current);
+}, [togleButton.stateMessage]);
+
 
   return (
     <>
     <div className='header'>
       <h2>Game {name&&name}</h2>
-      <h2>Score:{score&&score}</h2>
+      <h2>Score: {resultScore} </h2>
+      <h2>Total Score:{score&&score}</h2>
     </div>
+      <h3>{(targetWord&&watch.seconds===0)&&targetWord.word}</h3>
       <Watch
         minutes={watch.minutes}
         seconds={watch.seconds}
       />
       <CardContainer
+        stateGame={togleButton.stateMessage}
         words={words}
         checkfunction={checkWordSelected}
       />
       {(togleButton.stateMessage) ? (
-        <button disabled={togleButton.stateDisabled} onClick={() =>{setTogleButton({...togleButton,stateMessage:!togleButton.stateMessage})}}>Reset</button>
+        <button disabled={togleButton.stateDisabled} onClick={() =>{resetGame()}}>Reset</button>
       ):
       (
         <button  onClick={()=>startGame()}>Start</button>

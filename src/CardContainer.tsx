@@ -1,12 +1,12 @@
 import Card from "./Card";
 import type { PropsCard } from "./types";
 
-const CardContainer = ({words,checkfunction}:{words:Array<PropsCard>,checkfunction:any}) => {
+const CardContainer = ({words,checkfunction,stateGame}:{words:Array<PropsCard>,checkfunction:any,stateGame:boolean}) => {
   return (
     <div className="container-cards">
       
 
-        {(  words && words.length>0)
+        {(  words && words.length>0&&stateGame)
           ?
           (
             words.map((e,i) =>{
@@ -15,6 +15,7 @@ const CardContainer = ({words,checkfunction}:{words:Array<PropsCard>,checkfuncti
                   key={i}
                   className="borderCard"
                   onClick={() =>{checkfunction({word:e})}}
+                  
                   >
                   <Card 
                     checkWord={checkfunction}
@@ -24,7 +25,16 @@ const CardContainer = ({words,checkfunction}:{words:Array<PropsCard>,checkfuncti
               )
             })
           ):(
-            <></>
+            words.map((e,i) =>{
+              return(
+                <span 
+                  key={i}
+                  className="borderCard"  
+                  >
+                  
+                </span>
+              )
+            })
           )}
     </div>
   )

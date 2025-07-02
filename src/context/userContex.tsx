@@ -10,10 +10,10 @@ export function UserContextProvider({children}:any){
 
     const updateName = useCallback(({name}:{name:string|null}) =>{
         setName(name)
-    },[])
+    },[name])
     const updateScore = useCallback(({score}:{score:number}) =>{
-        setScore(score)
-    },[])
+        setScore(prev => prev+score)
+    },[score])
 
 	return (
 		<UserContext value={{name,score,updateName,updateScore}}>

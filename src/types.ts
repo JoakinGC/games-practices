@@ -2,7 +2,9 @@
 export type PropsCard = {
     id:number,
     word:string,
-    state:boolean
+    state:boolean,
+    score:number,
+    wasSuccessful:boolean
 }
 
 export type PropsTimer = {
