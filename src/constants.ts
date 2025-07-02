@@ -1,0 +1,50 @@
+import type { PropsCard } from "./types";
+
+
+export const ramdomWords:Array<PropsCard> = [
+    {
+        id:0,
+        state:false,
+        word:"Amanecer"
+    },
+    {
+        id:1,
+        state:false,
+        word:"Brócoli"
+    },
+    {
+        id:2,
+        state:false,
+        word:"Cangrejo"
+    },
+    {
+        id:3,
+        state:false,
+        word:"Dócil"
+    },
+    {
+        id:4,
+        state:false,
+        word:"Esfera"
+    },
+    {
+        id:5,
+        state:false,
+        word:"Fósil"
+    },
+    {
+        id:6,
+        state:false,
+        word:"Gárgola"
+    },
+    {
+        id:7,
+        state:false,
+        word:"Hedor"
+    },
+    {
+        id:8,
+        state:false,
+        word:"Ígneo"
+    },
+]
