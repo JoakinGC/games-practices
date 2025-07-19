@@ -1,0 +1,38 @@
+
+
+.container-header{
+    height: 120px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand-container{
+    margin: 0.25rem;
+    margin-left: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.navbar{
+    margin: 0.25rem;
+    margin-right: 5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-size: 18px;
+}
+
+@media (min-width: 768px) {
+    .md\:hidden {
+        display: none;
+    }
+}
+
+@media not all and (min-width: 1024px) {
+    .max-lg\:hidden {
+        display: none;
+    }
+}
