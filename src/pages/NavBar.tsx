@@ -25,9 +25,9 @@ const Header = () => {
       <nav className="navbar max-lg:hidden">
 
         {
-          navLinks&&navLinks.map((e) =>{
+          navLinks&&navLinks.map((e,i) =>{
            return (
-            <div>
+            <div key={i}>
               <Link to={`${e.route}`}>{e.label}</Link>  
             </div>
            ) 

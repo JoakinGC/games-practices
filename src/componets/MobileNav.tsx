@@ -28,12 +28,13 @@ const MobileNav = ({ currentPath = "" }: Props) => (
         </div>
 
         <nav className="MobileNavSheet-nav">
-          {navLinks.map((item) => {
+          {navLinks.map((item,i) => {
             const isActive = currentPath.toLowerCase() === item.route.toLowerCase();
             return (
               <Dialog.Close asChild key={item.route}>
                 <Link
                   to={item.route}
+                  key={i}
                   className={`MobileNavSheet-link ${isActive ? "is-active" : ""}`}
                 >
                   {item.label}
