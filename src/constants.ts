@@ -70,7 +70,7 @@ export const ramdomWords:Array<PropsCard> = [
 export const navLinks:Array<navItem> = [
     {
     imgURL: "#",
-    route: "/Home",
+    route: "/home",
     label: "Home",
   },
   {

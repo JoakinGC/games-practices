@@ -1,0 +1,75 @@
+.section-hero{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+}
+
+.slider {
+  width: 100%;
+  height: var(--height);
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+
+.slider .list-items-carousel{
+  display: flex; 
+  width: 100%;
+  min-width: calc(var(--width) * var(--quantity));
+  height: 100%;
+  position: relative;
+}
+
+.slider .list-items-carousel .item{
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: autoRun var(--duration) linear infinite;
+  animation-delay: calc((var(--duration) / var(--quantity)) * (1 - var(--position)));
+}
+
+
+
+
+.slider .list-items-carousel .one  { --position: 1; }
+.slider .list-items-carousel .two  { --position: 2; }
+.slider .list-items-carousel .three{ --position: 3; }
+
+.slider .list-items-carousel .item a{
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes autoRun{
+  from { left: 100%; }
+  to   { left: calc(var(--width) * -1); }
+}
+
+.slider:hover .item{
+    animation-play-state: paused!important;
+}

@@ -26,7 +26,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path='/game' element={<GameHiddenWord/>}/>
           <Route path='/sign-in' element={<SingIn/>}/>
           <Route path='/score' element={<Score/>}/>
-          <Route path='/home' element={<Home/>}/>
+          <Route index path='/home' element={<Home/>}/>
 
         </Routes>
         </div>

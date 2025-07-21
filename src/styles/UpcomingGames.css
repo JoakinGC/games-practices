@@ -1,0 +1,63 @@
+.upcoming-games {
+  background: var(--c-bg);
+  color: var(--c-text);
+  padding: 3rem 1rem;
+  text-align: center;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upcoming-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--c-accent);
+  margin-bottom: 0.5rem;
+}
+
+.upcoming-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.upcoming-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.game-card {
+  background: var(--c-bg-2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 280px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px var(--c-accent-glow);
+}
+
+.game-title {
+  font-size: 1.3rem;
+  color: var(--c-accent);
+  margin-bottom: 0.5rem;
+}
+
+.game-description {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+}
+
+@media (max-width: 768px) {
+  .upcoming-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
