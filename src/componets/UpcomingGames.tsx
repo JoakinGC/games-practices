@@ -10,23 +10,23 @@ const UpcomingGames = () => {
 
       <div className="upcoming-list">
         <div className="game-card">
-          <h3 className="game-title">Risk</h3>
+          <h3 className="game-title">World War in Spain</h3>
           <p className="game-description">
-            Conquista territorios y demuestra tu estrategia en una versión digital de este clásico juego de mesa.
+            Conquer territories and demonstrate your strategy in a digital version of this classic board game.
           </p>
         </div>
 
         <div className="game-card">
           <h3 className="game-title">Word Battle</h3>
           <p className="game-description">
-            Un reto de palabras al estilo Pasapalabras, pero con giros únicos y desafíos que pondrán a prueba tu rapidez mental.
+            A word challenge where your knowledge of words will be tested.
           </p>
         </div>
 
         <div className="game-card">
           <h3 className="game-title">Arcade VR Challenge</h3>
           <p className="game-description">
-            Vive la experiencia arcade como nunca antes con nuestra próxima sala de realidad virtual.
+            Experience the arcade like never before with our upcoming virtual reality room.
           </p>
         </div>
       </div>

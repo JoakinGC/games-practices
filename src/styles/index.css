@@ -13,6 +13,8 @@
   --c-btn-hover: #ffdd7a;
   --c-text: #ffffff;
   --c-text-dark: #1a1a1a;
+  --line-thickness: 2px; 
+  --final-glow-intensity: 0 0 10px var(--c-accent), 0 0 20px var(--c-accent);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -67,6 +69,8 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+
 
 
 .logo {

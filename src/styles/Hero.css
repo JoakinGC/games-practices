@@ -5,6 +5,34 @@
     height: 50vh;
 }
 
+.neon-box-section-hero{
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: drawBorder 5s linear infinite alternate;
+  background: 
+    linear-gradient(to right, var(--c-accent) 100%, transparent 0%) top left no-repeat,
+    linear-gradient(to bottom, var(--c-accent) 100%, transparent 0%) top right no-repeat,
+    linear-gradient(to left, var(--c-accent) 100%, transparent 0%) bottom right no-repeat,
+    linear-gradient(to top, var(--c-accent) 100%, transparent 0%) bottom left no-repeat;
+  background-size: 
+    0% var(--line-thickness),
+    var(--line-thickness) 0%,
+    0% var(--line-thickness),
+    var(--line-thickness) 0%;
+  transition: box-shadow 0.3s ease;
+}
+
+
+.icon-world-war-game {
+  filter: invert(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+
 .slider {
   width: 100%;
   height: var(--height);
@@ -54,8 +82,6 @@
 }
 
 
-
-
 .slider .list-items-carousel .one  { --position: 1; }
 .slider .list-items-carousel .two  { --position: 2; }
 .slider .list-items-carousel .three{ --position: 3; }
@@ -63,6 +89,7 @@
 .slider .list-items-carousel .item a{
   width: 100%;
   text-align: center;
+  color: white;
 }
 
 @keyframes autoRun{
@@ -70,6 +97,123 @@
   to   { left: calc(var(--width) * -1); }
 }
 
+@keyframes drawBorder {
+  0% {
+    background-size: 
+      0% var(--line-thickness),
+      var(--line-thickness) 0%,
+      0% var(--line-thickness),
+      var(--line-thickness) 0%;
+    text-shadow: none;
+    box-shadow: none;
+  }
+  25% {
+    background-size: 
+      100% var(--line-thickness),
+      var(--line-thickness) 0%,
+      0% var(--line-thickness),
+      var(--line-thickness) 0%;
+  }
+  50% {
+    background-size: 
+      100% var(--line-thickness),
+      var(--line-thickness) 100%,
+      0% var(--line-thickness),
+      var(--line-thickness) 0%;
+  }
+  75% {
+    background-size: 
+      100% var(--line-thickness),
+      var(--line-thickness) 100%,
+      100% var(--line-thickness),
+      var(--line-thickness) 0%;
+  }
+  100% {
+    background-size: 
+      100% var(--line-thickness),
+      var(--line-thickness) 100%,
+      100% var(--line-thickness),
+      var(--line-thickness) 100%;
+    text-shadow: 0 0 5px var(--c-text), 0 0 10px var(--c-text);
+    box-shadow: var(--final-glow-intensity);
+  }
+}
+
+@keyframes boxTitles{
+  20%{
+    text-shadow: 
+      0 0 1px var(--c-text), 
+      0 0 2px var(--c-text);
+  }
+  40%{
+    text-shadow: 
+      0 0 3px var(--c-text), 
+      0 0 4px var(--c-text);
+  }
+  80%{
+    text-shadow: 
+      0 0 4px var(--c-text), 
+      0 0 5px var(--c-text);
+  }
+  100%{
+  text-shadow: 
+      0 0 6px var(--c-text), 
+      0 0 8px var(--c-text);
+  }
+}
+
+
+
 .slider:hover .item{
     animation-play-state: paused!important;
 }
+
+
+.icon-world-war-game:hover {
+  transform: translateY(-5px) scale(1.05);
+  filter: invert(1)
+          drop-shadow(0 0 5px var(--c-accent))
+          drop-shadow(0 0 10px var(--c-accent))
+          drop-shadow(0 0 20px var(--c-accent))
+          drop-shadow(0 0 40px var(--c-accent));
+}
+
+.icon-hide-word:hover{
+  transform: translateY(-5px) scale(1.05);
+  filter: drop-shadow(0 0 5px var(--c-accent))
+          drop-shadow(0 0 10px var(--c-accent))
+          drop-shadow(0 0 20px var(--c-accent))
+          drop-shadow(0 0 40px var(--c-accent));
+}
+
+
+.icon-word-definition:hover{
+  transform: translateY(-5px) scale(1.05);
+  filter: drop-shadow(0 0 5px var(--c-accent))
+          drop-shadow(0 0 10px var(--c-accent))
+          drop-shadow(0 0 20px var(--c-accent))
+          drop-shadow(0 0 40px var(--c-accent));
+}
+
+.slider .list-items-carousel .item a:hover{
+   text-shadow: 
+      0 0 6px var(--c-text), 
+      0 0 8px var(--c-text);
+}
+
+
+@media (max-width: 600px){
+  .section-hero{
+    height: 70vh;
+  }
+
+  .neon-box-section-hero{
+    padding: 0px 0px;
+  }
+  .subtitle-hero{
+    text-align: center;
+  }
+}
+
+
+

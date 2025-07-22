@@ -1,5 +1,6 @@
 .upcoming-games {
-  background: var(--c-bg);
+  position: relative;
+  
   color: var(--c-text);
   padding: 3rem 1rem;
   text-align: center;
@@ -8,7 +9,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
+
 
 .upcoming-title {
   font-size: 2rem;
@@ -56,8 +59,22 @@
 }
 
 @media (max-width: 768px) {
+  .upcoming-games {
+    height: 150vh;
+  }
+
+  .game-card {
+    width: 40vw;
+  }
+
   .upcoming-list {
     flex-direction: column;
     align-items: center;
   }
 }
+
+
+
+
+
+
