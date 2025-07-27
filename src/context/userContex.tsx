@@ -1,4 +1,4 @@
-import {createContext,useState,useCallback} from 'react'
+import {createContext,useState,useCallback, useEffect} from 'react'
 import type { UserData } from '../types';
 import { ClerkProvider } from '@clerk/clerk-react'
 
@@ -22,6 +22,7 @@ export function UserContextProvider({children}:any){
         setScore(prev => prev+score)
     },[score])
 
+    
 	return (
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
 		    <UserContext value={{name,score,updateName,updateScore}}>

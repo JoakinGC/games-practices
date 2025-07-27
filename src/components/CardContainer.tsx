@@ -1,4 +1,4 @@
-import Card from "../componets/Card";
+import Card from "../components/Card";
 import type { PropsCard } from "../types";
 
 const CardContainer = ({words,checkfunction,stateGame}:{words:Array<PropsCard>,checkfunction:any,stateGame:boolean}) => {

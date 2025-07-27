@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import MobileNav from "../componets/MobileNav"
+import MobileNav from "../components/MobileNav"
 import "../styles/header.css";
 import { navLinks } from "../constants";
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'

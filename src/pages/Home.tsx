@@ -1,9 +1,11 @@
-import UpcomingGames from "../componets/UpcomingGames"; 
-import Footer from "../componets/Footer";
-import Hero from "../componets/Hero";
+import UpcomingGames from "../components/UpcomingGames"; 
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 import "../styles/Home.css";
 
+
 const Home = () => {
+
   return (
     <>
       <Hero/>
